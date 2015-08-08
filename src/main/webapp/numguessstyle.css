@@ -4,9 +4,11 @@ Some items are intentionally not optimized or not coded in the right way
 FastTrackIT 2015,
 version 1.0
 */
-
+label{
+    background-color:#50c5f2;
+    }
 body {
-    background-color:floralwhite;
+    background-color:#15ee0d;
     font-family: Verdana, Helvetica, Arial, sans-serif;
     line-height: 125%;
     padding: 0;
@@ -40,6 +42,7 @@ h1 {
     }
 #header {
     position: absolute;
+    text-align: center;
     border-top: 3px solid #15ee0d;
     background-color: #15ee0d;
     width: 100%;
@@ -50,7 +53,7 @@ h1 {
     top: 110px;
     width: 110px;
     height: 180px;
-    background-color: navajowhite;
+    background-color: #15ee0d;
     color:black;
     padding-left: .8em;
 ;
@@ -70,7 +73,7 @@ h1 {
     top: 110px;
     width: 120px;
     height:180px;
-    background-color: navajowhite;
+    background-color: #15ee0d;
     color:black;
     padding-left: .8em;
 ;
