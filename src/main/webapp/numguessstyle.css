@@ -27,18 +27,21 @@ h1 {
 #tagline p {
     font-style: italic;
     font-family: Georgia, Times, serif;
-    background-color: #bed8f3;
-    border-top: 3px solid #7da5d8;
-    border-bottom: 3px solid #7da5d8;
+    background-color: #15ee0d;
+    border-top: 3px solid #15ee0d;
+    border-bottom: 3px solid #15ee0d;
     padding-top: .2em;
     padding-bottom: .2em;
     padding-left: .8em;
     margin: 0;
 }
-
+#sitebranding {
+    background-color: blue;
+    }
 #header {
     position: absolute;
-    border-top: 3px solid #7da5d8;
+    border-top: 3px solid #15ee0d;
+    background-color: #15ee0d;
     width: 100%;
 }
 
@@ -100,7 +103,7 @@ h1 {
 
 /* class selector*/
 .test {
-    color: #aa0044;
+    color: #15ee0d;
 }
 
 .highlight {
