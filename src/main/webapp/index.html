@@ -15,72 +15,7 @@ FastTrackIT 2015
     <meta charset="utf-8"/>
     <link href="numguessstyle.css" rel="stylesheet" type="text/css"/>
 
-    <script language="JavaScript">
-
-        function reset(){
-            document.getElementById("serverResponse").innerText="";
-            xmlHttp = new XMLHttpRequest();
-            xmlHttp.onreadystatechange=callback;
-            var url ="NumGenServlet"+"?requestRestartGame=1";
-            xmlHttp.open("GET",url,true);
-            xmlHttp.send();
-        }
-
-         function guess(){
-         if (+document.getElementById("number").value > 0 && +document.getElementById("number").value < 11){
-             xmlHttp = new XMLHttpRequest();
-             xmlHttp.onreadystatechange=callback;
-             var url ="NumGenServlet"+"?requestGuessNumber="+document.getElementById("number").value;
-             xmlHttp.open("GET",url,true);
-             xmlHttp.send();
-             }
-          else{
-            alert("You should enter a valid number between 1-10!");
-            }
-         }
-
-        function guessLink(givenValue) {
-            xmlHttp = new XMLHttpRequest();
-            xmlHttp.onreadystatechange=callback;
-            var url ="NumGenServlet"+"?requestGuessNumber="+givenValue;
-            xmlHttp.open("GET",url,true);
-            xmlHttp.send();
-        }
-
-         function callback() {
-             if(xmlHttp.readyState==4 && xmlHttp.status==200) {
-                 var jSonMessage = JSON.parse(xmlHttp.responseText);
-                 var keyRestartGame=jSonMessage.keyRestartGame;
-                 if (keyRestartGame != undefined && keyRestartGame.length > 0) {
-                     alert("Restart with success, the game started!");
-                     document.getElementById("number").value="";
-                     return;
-                 }
-
-                 var keyError = jSonMessage.keyError;
-                 if (keyError != undefined && keyError.length > 0) {
-                     alert("You should enter a valid number!");
-                     return;
-                 }
-                var keySuccess = jSonMessage.keySuccess;
-                 var keyHint = jSonMessage.keyHint;
-                 var keyNrGuesses = jSonMessage.keyNrGuesses;
-
-                 if(keySuccess=="false") {
-                     if (keyHint == "higher")
-                         document.getElementById("serverResponse").innerHTML = "WRONG, Try a Higher one!";
-                     else if (keyHint == "lower")
-                         document.getElementById("serverResponse").innerHTML = "WRONG, Try a Lower one!";
-                 }
-                 else
-                 if(keySuccess=="true")
-                 {
-                     document.getElementById("serverResponse").innerHTML = "Congrats, you guessed the number " + document.getElementById("number").value + " after " + keyNrGuesses + " guesses.";
-                 }
-             }
-         }
-
-    </script>
+    <script src="javaScript.js" type="text/javascript"></script>
 
 </head>
 
@@ -106,7 +41,7 @@ FastTrackIT 2015
 </div>
 <div id="bodycontent">
     <div id="form">
-        <label for="number">Number:&nbsp;</label><input type="number" id="number"; style="width:40px"/>
+        <label for="number">Number:&nbsp;</label><input type="number" id="number" style="width:40px"/>
 
         </br></br>
 
@@ -116,8 +51,10 @@ FastTrackIT 2015
     </div>
 
 </div>
-
-<div id="serverResponse"></div>
+</div>
+<div id="responseMessageDiv">
+    <div id="serverResponse"></div>
+</div>
 
 <div id="postcontent">
     <a href="javascript:guessLink(6)" style="color:white;">It could be 6</a></br>

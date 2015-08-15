@@ -16,13 +16,16 @@ FastTrackIT 2015
 
 public class NumGeneratorBusinessLogic {
 
-    private static final int MAX_NUMBER = 6;
+    private static final int MAX_NUMBER = 10;
 
     private boolean isFirstTime = true;
     private boolean successfulGuess;
     private int numberOfGuesses;
     private int generatedNumber;
     private String hint;
+    double startingTime;
+    double guessTime;
+    double timeToGuess;
 
     public NumGeneratorBusinessLogic(){
         resetNumberGenerator();
@@ -31,7 +34,9 @@ public class NumGeneratorBusinessLogic {
     public boolean getSuccessfulGuess(){
         return successfulGuess;
     }
-
+    public double getGuessTime(){
+        return timeToGuess;
+    }
     public String getHint(){
         return hint;
     }
@@ -55,11 +60,16 @@ public class NumGeneratorBusinessLogic {
             generatedNumber = NumGenerator.generate(MAX_NUMBER);
             System.out.println("gennr:"+generatedNumber);
             isFirstTime = false;
+            startingTime = System.currentTimeMillis();
         }
         numberOfGuesses++;
         if (guessNumber == generatedNumber) {
             hint="";
             successfulGuess = true;
+            guessTime = System.currentTimeMillis();
+            double x = guessTime - startingTime;
+            timeToGuess = x;
+            timeToGuess = timeToGuess / 1000;
         } else if (guessNumber < generatedNumber) {
             hint = "higher";
             successfulGuess = false;
