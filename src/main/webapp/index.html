@@ -10,10 +10,10 @@ FastTrackIT 2015
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <title>Welcome to Apple</title>
-      <meta charset="utf-8"/>
-      <link href="numguessstyle.css" rel="stylesheet" type="text/css"/>
+    <meta charset="utf-8"/>
+    <link href="numguessstyle.css" rel="stylesheet" type="text/css"/>
 
     <script language="JavaScript">
 
@@ -27,11 +27,16 @@ FastTrackIT 2015
         }
 
          function guess(){
+         if (+document.getElementById("number").value > 0 && +document.getElementById("number").value < 11){
              xmlHttp = new XMLHttpRequest();
              xmlHttp.onreadystatechange=callback;
              var url ="NumGenServlet"+"?requestGuessNumber="+document.getElementById("number").value;
              xmlHttp.open("GET",url,true);
              xmlHttp.send();
+             }
+          else{
+            alert("You should enter a valid number between 1-10!");
+            }
          }
 
         function guessLink(givenValue) {
@@ -47,7 +52,7 @@ FastTrackIT 2015
                  var jSonMessage = JSON.parse(xmlHttp.responseText);
                  var keyRestartGame=jSonMessage.keyRestartGame;
                  if (keyRestartGame != undefined && keyRestartGame.length > 0) {
-                     alert("Restart cu succes, jocul a reinceput!");
+                     alert("Restart with success, the game started!");
                      document.getElementById("number").value="";
                      return;
                  }
@@ -77,50 +82,50 @@ FastTrackIT 2015
 
     </script>
 
-  </head>
+</head>
 
 
-  <body background="apple_back.jpg" style="background-repeat: no-repeat; background-size:cover;">
+<body background="apple_back.jpg" style="background-repeat: no-repeat; background-size:cover;">
 
 
-  <div id="header">
-      <div id="sitebranding">
-          <h1>Apple.org</h1>
-      </div>
-      <div id="tagline">
-          <p>Welcome to Apple do you want to Guess a number.</p>
-      </div>
-  </div>
-  <div id="navigation">
-      <a href="javascript:guessLink(1)" style="color:white;">It could be 1</a></br>
-      <a href="javascript:guessLink(2)" style="color:white;">It could be 2</a></br>
-      <a href="javascript:guessLink(3)" style="color:white;">It could be 3</a></br>
-      <a href="javascript:guessLink(4)" style="color:white;">It could be 4</a></br>
-      <a href="javascript:guessLink(5)" style="color:white;">It could be 5</a></br>
+<div id="header">
+    <div id="sitebranding">
+        <h1>Apple.org</h1>
+    </div>
+    <div id="tagline">
+        <p>Welcome to Apple do you want to Guess a number.</p>
+    </div>
+</div>
+<div id="navigation">
+    <a href="javascript:guessLink(1)" style="color:white;">It could be 1</a></br>
+    <a href="javascript:guessLink(2)" style="color:white;">It could be 2</a></br>
+    <a href="javascript:guessLink(3)" style="color:white;">It could be 3</a></br>
+    <a href="javascript:guessLink(4)" style="color:white;">It could be 4</a></br>
+    <a href="javascript:guessLink(5)" style="color:white;">It could be 5</a></br>
 
-  </div>
-  <div id="bodycontent">
-      <div id="form">
-          <label for="number">Number:&nbsp;</label><input type="number" id="number" style="width:60px"/>
+</div>
+<div id="bodycontent">
+    <div id="form">
+        <label for="number">Number:&nbsp;</label><input type="number" id="number"; style="width:40px"/>
 
-          </br></br>
+        </br></br>
 
-          <input type="button" id="guessButton" value="Guess now" onClick="guess()"/>
-          <input type="button" id="resetButton" value="Reset Game" onClick="reset()"/>
+        <input type="button" id="guessButton" value="Guess now"  onClick="guess()"/>
+        <input type="button" id="resetButton" value="Reset Game" onClick="reset()"/>
 
-      </div>
+    </div>
 
-  </div>
+</div>
 
-  <div id="serverResponse"></div>
+<div id="serverResponse"></div>
 
-  <div id="postcontent">
-      <a href="javascript:guessLink(6)" style="color:white;">It could be 6</a></br>
-      <a href="javascript:guessLink(7)" style="color:white;">It could be 7</a></br>
-      <a href="javascript:guessLink(8)" style="color:white;">It could be 8</a></br>
-      <a href="javascript:guessLink(9)" style="color:white;">It could be 9</a></br>
-      <a href="javascript:guessLink(10)" style="color:white;">It could be 10</a></br>
-  </div>
+<div id="postcontent">
+    <a href="javascript:guessLink(6)" style="color:white;">It could be 6</a></br>
+    <a href="javascript:guessLink(7)" style="color:white;">It could be 7</a></br>
+    <a href="javascript:guessLink(8)" style="color:white;">It could be 8</a></br>
+    <a href="javascript:guessLink(9)" style="color:white;">It could be 9</a></br>
+    <a href="javascript:guessLink(10)" style="color:white;">It could be 10</a></br>
+</div>
 
-  </body>
+</body>
 </html>
